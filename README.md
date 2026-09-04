@@ -7,7 +7,7 @@ Static coming soon page. One file, no dependencies, no build step.
 Everything you'd want to change is in `index.html`:
 
 - The `<!-- EDIT ME -->` block in `<head>` — page title, description, social preview text.
-- The `<main>` element — eyebrow, headline, paragraph, contact email.
+- The `<main>` element — eyebrow, headline, paragraph.
 
 The word wrapped in `<em>` renders in italic accent colour. Move it to change emphasis.
 

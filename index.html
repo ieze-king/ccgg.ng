@@ -12,7 +12,7 @@
 <title>CCGG — Coming soon</title>
 <meta name="description" content="CCGG is in development. The site opens when the work is ready." />
 <link rel="canonical" href="https://ccgg.ng/" />
-<meta name="theme-color" content="#0c0b0a" />
+<meta name="theme-color" content="#f7f5f1" />
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://ccgg.ng/" />
@@ -20,7 +20,7 @@
 <meta property="og:description" content="CCGG is in development. The site opens when the work is ready." />
 <meta name="twitter:card" content="summary_large_image" />
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230c0b0a'/%3E%3Ccircle cx='16' cy='16' r='5.5' fill='none' stroke='%23c9552f' stroke-width='2.5'/%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f7f5f1'/%3E%3Ccircle cx='16' cy='16' r='5.5' fill='none' stroke='%23c9552f' stroke-width='2.5'/%3E%3C/svg%3E" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -28,18 +28,18 @@
 
 <style>
 :root{
-  --ink:        #ede7de;
-  --ink-dim:    #8f877c;
-  --ink-faint:  #4a453f;
-  --bg:         #0c0b0a;
-  --bg-lift:    #131110;
-  --accent:     #c9552f;
+  --bg:         #f7f5f1;   /* warm paper white */
+  --ink:        #14110e;   /* near black */
+  --ink-dim:    #6b6259;
+  --ink-faint:  #b6ada1;
+  --rule:       rgba(20,17,14,.13);
+  --accent:     #c0501f;
 
   --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
   --mono:  "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  --gap:   clamp(20px, 3.2vw, 44px);   /* poster frame inset */
-  --micro: clamp(9.5px, 0.72vw, 11.5px);
+  --gap:   clamp(18px, 2.6vw, 38px);   /* poster frame inset */
+  --micro: clamp(9.5px, .7vw, 11px);
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
@@ -58,19 +58,19 @@ body{
   overflow-x:hidden;
 }
 
-/* ── Atmosphere: a slow warm ember behind the type, a faint rule grid,
-      and a film grain laid over everything ─────────────────────── */
+/* ── Atmosphere: a warm blush behind the type, a faint rule grid,
+      and a whisper of grain over the paper ─────────────────────── */
 .atmos{ position:fixed; inset:0; pointer-events:none; z-index:0; }
 
-.atmos::before{                       /* drifting ember */
+.atmos::before{                       /* drifting blush */
   content:"";
   position:absolute;
   left:50%; top:52%;
-  width:min(140vw,1400px); aspect-ratio:1;
+  width:min(150vw,1500px); aspect-ratio:1;
   transform:translate(-50%,-50%);
-  background:
-    radial-gradient(closest-side, rgba(201,85,47,.16), rgba(201,85,47,.05) 45%, transparent 72%);
-  filter:blur(18px);
+  background:radial-gradient(closest-side,
+    rgba(192,80,31,.10), rgba(192,80,31,.035) 45%, transparent 72%);
+  filter:blur(20px);
   animation:drift 34s ease-in-out infinite alternate;
 }
 
@@ -78,8 +78,8 @@ body{
   content:"";
   position:absolute; inset:0;
   background:
-    repeating-linear-gradient(to right,  rgba(237,231,222,.045) 0 1px, transparent 1px 11.11%),
-    repeating-linear-gradient(to bottom, rgba(237,231,222,.03)  0 1px, transparent 1px 140px);
+    repeating-linear-gradient(to right,  rgba(20,17,14,.055) 0 1px, transparent 1px 11.11%),
+    repeating-linear-gradient(to bottom, rgba(20,17,14,.04)  0 1px, transparent 1px 128px);
   mask-image:radial-gradient(ellipse 120% 90% at 50% 45%, #000 30%, transparent 100%);
   -webkit-mask-image:radial-gradient(ellipse 120% 90% at 50% 45%, #000 30%, transparent 100%);
 }
@@ -87,14 +87,14 @@ body{
 .grain{
   position:fixed; inset:-50%;
   z-index:2; pointer-events:none;
-  opacity:.32; mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  opacity:.28; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
   animation:jitter 720ms steps(3) infinite;
 }
 
 @keyframes drift{
-  0%   { transform:translate(-52%,-50%) scale(1);    opacity:.85; }
-  100% { transform:translate(-47%,-54%) scale(1.14); opacity:1;   }
+  0%   { transform:translate(-52%,-50%) scale(1);    opacity:.8; }
+  100% { transform:translate(-47%,-54%) scale(1.14); opacity:1;  }
 }
 @keyframes jitter{
   0%{transform:translate(0,0)} 33%{transform:translate(-2%,1.5%)} 66%{transform:translate(1.5%,-1%)} 100%{transform:translate(0,0)}
@@ -104,7 +104,7 @@ body{
 .frame{
   position:fixed;
   inset:var(--gap);
-  border:1px solid rgba(237,231,222,.13);
+  border:1px solid var(--rule);
   pointer-events:none;
   z-index:3;
 }
@@ -117,19 +117,19 @@ body{
 .frame span:nth-child(3){ bottom:-1px; left:-1px;    border-right:0; border-top:0;    }
 .frame span:nth-child(4){ bottom:-1px; right:-1px;   border-left:0;  border-top:0;    }
 
-/* ── Page scaffold ──────────────────────────────────────────────── */
+/* ── Page scaffold — one screen, never scrolls ──────────────────── */
 .sheet{
   position:relative; z-index:1;
-  min-height:100svh;
-  padding:calc(var(--gap) * 1.9) calc(var(--gap) * 1.9);
+  height:100svh;
+  padding:calc(var(--gap) * 1.85) calc(var(--gap) * 1.85);
   display:grid;
   grid-template-rows:auto 1fr auto;
-  gap:clamp(40px,7vh,88px);
+  gap:clamp(24px, 4.5vh, 60px);
 }
 
 .rowline{
   display:flex; align-items:center; justify-content:space-between;
-  gap:20px; flex-wrap:wrap;
+  gap:20px;
 }
 
 .label{
@@ -139,6 +139,7 @@ body{
   letter-spacing:.22em;
   text-transform:uppercase;
   color:var(--ink-dim);
+  white-space:nowrap;
 }
 
 .mark{ color:var(--ink); letter-spacing:.34em; }
@@ -148,24 +149,28 @@ body{
 .dot{
   width:5px; height:5px; border-radius:50%;
   background:var(--accent);
-  box-shadow:0 0 0 0 rgba(201,85,47,.55);
   animation:pulse 2.6s ease-out infinite;
 }
 @keyframes pulse{
-  0%{ box-shadow:0 0 0 0 rgba(201,85,47,.5); }
-  70%{ box-shadow:0 0 0 8px rgba(201,85,47,0); }
-  100%{ box-shadow:0 0 0 0 rgba(201,85,47,0); }
+  0%{ box-shadow:0 0 0 0 rgba(192,80,31,.45); }
+  70%{ box-shadow:0 0 0 8px rgba(192,80,31,0); }
+  100%{ box-shadow:0 0 0 0 rgba(192,80,31,0); }
 }
 
 /* ── The statement ──────────────────────────────────────────────── */
-main{ align-self:center; max-width:19ch; }
+main{
+  align-self:center;
+  min-width:0;
+  max-width:min(20ch, 100%);
+}
 
 .eyebrow{
   display:flex; align-items:center; gap:14px;
-  margin:0 0 clamp(22px,3.4vh,34px);
+  margin:0 0 clamp(16px, 2.6vh, 30px);
   color:var(--accent);
   font-size:var(--micro); font-weight:500;
   letter-spacing:.22em; text-transform:uppercase;
+  white-space:nowrap;
 }
 .eyebrow::after{
   content:""; height:1px; flex:1; max-width:88px;
@@ -176,41 +181,27 @@ h1{
   margin:0;
   font-family:var(--serif);
   font-weight:400;
-  font-size:clamp(3.4rem, 12.5vw, 10.5rem);
-  line-height:.88;
-  letter-spacing:-.022em;
+  /* sized off whichever of width or height is the binding constraint,
+     so the page fits the screen in any window shape */
+  font-size:clamp(2.15rem, min(7.4vw, 12vh), 6.6rem);
+  line-height:.94;
+  letter-spacing:-.02em;
   text-wrap:balance;
 }
 h1 em{
   font-style:italic;
   color:var(--accent);
-  letter-spacing:-.01em;
+  letter-spacing:-.008em;
 }
 
 .deck{
-  margin:clamp(26px,4vh,40px) 0 0;
-  max-width:42ch;
-  font-size:clamp(12.5px,1.05vw,14px);
-  line-height:1.85;
+  margin:clamp(18px, 3vh, 32px) 0 0;
+  max-width:44ch;
+  font-size:clamp(12px, .95vw, 13.5px);
+  line-height:1.8;
   color:var(--ink-dim);
   text-wrap:pretty;
 }
-
-.contact{
-  display:inline-block;
-  margin-top:clamp(24px,3.6vh,34px);
-  padding-bottom:3px;
-  color:var(--ink);
-  font-size:clamp(12.5px,1.05vw,14px);
-  text-decoration:none;
-  background-image:linear-gradient(var(--accent),var(--accent));
-  background-repeat:no-repeat;
-  background-position:0 100%;
-  background-size:0% 1px;
-  transition:background-size .45s cubic-bezier(.2,.7,.2,1), color .3s;
-}
-.contact:hover,.contact:focus-visible{ background-size:100% 1px; color:var(--accent); }
-.contact::after{ content:" ↗"; color:var(--ink-faint); }
 
 /* ── Vertical edge text ─────────────────────────────────────────── */
 .edge{
@@ -239,18 +230,23 @@ h1 em{
 
 .d1{animation-delay:.10s} .d2{animation-delay:.22s} .d3{animation-delay:.36s}
 .d4{animation-delay:.50s} .d5{animation-delay:.62s} .d6{animation-delay:.74s}
-.d7{animation-delay:.86s}
 
 @media (prefers-reduced-motion:reduce){
   .rise{ animation:none; opacity:1; transform:none; filter:none; }
   .atmos::before,.grain,.dot{ animation:none; }
-  .grain{ opacity:.2; }
+  .grain{ opacity:.18; }
+}
+
+/* short windows — pull the scaffold in so nothing is pushed off-screen */
+@media (max-height:620px){
+  .sheet{ padding:calc(var(--gap) * 1.3) calc(var(--gap) * 1.6); gap:clamp(16px,3vh,30px); }
+  .deck{ display:none; }
 }
 
 @media (max-width:640px){
-  .sheet{ padding:calc(var(--gap) * 2.1) calc(var(--gap) * 1.5); }
+  .sheet{ padding:calc(var(--gap) * 1.9) calc(var(--gap) * 1.5); }
   main{ max-width:100%; }
-  .rowline{ font-size:9.5px; }
+  h1{ font-size:clamp(2.3rem, min(13vw, 11vh), 4.4rem); }
 }
 </style>
 </head>
@@ -281,12 +277,10 @@ h1 em{
         CCGG isn’t open to the public yet. We’re taking the time to get it
         right, and this page will become the real thing when the work is ready.
       </p>
-
-      <a class="contact rise d6" href="mailto:hello@ccgg.ng">hello@ccgg.ng</a>
     </main>
     <!-- ═══ /EDIT ME ════════════════════════════════════════════ -->
 
-    <footer class="rowline label rise d7">
+    <footer class="rowline label rise d6">
       <span>ccgg.ng</span>
       <span>&copy; <span id="yr">2026</span></span>
     </footer>
