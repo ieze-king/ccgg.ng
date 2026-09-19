@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Logo from "./Logo";
+import SocialLinks from "./SocialLinks";
 import { org } from "@/lib/content";
+import { getSiteSettings } from "@/lib/site";
 
 const columns = [
   {
@@ -17,6 +19,7 @@ const columns = [
     links: [
       { href: "/media", label: "All Programmes" },
       { href: "/media#civic-conversations", label: "Civic Conversations" },
+      { href: "/news", label: "News" },
       { href: "/standards", label: "Editorial Standards" },
     ],
   },
@@ -31,7 +34,9 @@ const columns = [
   },
 ];
 
-export default function SiteFooter() {
+export default async function SiteFooter() {
+  const settings = await getSiteSettings();
+
   return (
     <footer className="bg-forest-950 text-white">
       <div className="torn-gold h-6 w-full" aria-hidden="true" />
@@ -47,6 +52,7 @@ export default function SiteFooter() {
             <p className="mt-1 text-xs tracking-[0.18em] text-white/45 uppercase">
               {org.rhythm}
             </p>
+            <SocialLinks socials={settings.socials} className="mt-6" />
           </div>
 
           {columns.map((col) => (
@@ -83,9 +89,14 @@ export default function SiteFooter() {
             <p>
               © {new Date().getFullYear()} {org.fullName}. {org.geography}.
             </p>
-            <p>
-              {/* PLACEHOLDER — real contact details pending */}
-              {org.address}
+            <p className="flex flex-wrap gap-x-4 gap-y-1">
+              <span>{settings.address}</span>
+              {settings.email && (
+                <a href={`mailto:${settings.email}`} className="hover:text-white/75">
+                  {settings.email}
+                </a>
+              )}
+              {settings.phone && <span>{settings.phone}</span>}
             </p>
           </div>
         </div>

@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
 import { ButtonLink, Eyebrow, Headline, Section } from "@/components/ui";
 import { festival } from "@/lib/content";
+import { getSiteSettings } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Civic Festival",
   description: `${festival.name} — ${festival.theme}`,
 };
 
-export default function Festival() {
+export const revalidate = 60;
+
+export default async function Festival() {
+  const settings = await getSiteSettings();
+
   return (
     <>
       <Section className="bg-forest-900 text-white">
@@ -21,8 +26,23 @@ export default function Festival() {
         <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-white/65">
           Parishes across Enugu State compete across music, culture, civic
           intelligence, digital media, sport and community impact.
-          {/* PLACEHOLDER — dates and venue pending */}
         </p>
+        {(settings.festivalDates || settings.festivalVenue) && (
+          <dl className="mt-7 flex flex-wrap gap-x-10 gap-y-4">
+            {settings.festivalDates && (
+              <div>
+                <dt className="text-xs font-bold tracking-[0.16em] text-white/45 uppercase">Dates</dt>
+                <dd className="mt-1 font-display text-lg font-bold text-gold-500">{settings.festivalDates}</dd>
+              </div>
+            )}
+            {settings.festivalVenue && (
+              <div>
+                <dt className="text-xs font-bold tracking-[0.16em] text-white/45 uppercase">Venue</dt>
+                <dd className="mt-1 font-display text-lg font-bold text-gold-500">{settings.festivalVenue}</dd>
+              </div>
+            )}
+          </dl>
+        )}
         <div className="mt-9">
           <ButtonLink href="/get-involved">Register your parish</ButtonLink>
         </div>

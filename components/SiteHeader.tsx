@@ -8,6 +8,7 @@ const nav = [
   { href: "/about", label: "About" },
   { href: "/pillars", label: "Our Work" },
   { href: "/media", label: "Media" },
+  { href: "/news", label: "News" },
   { href: "/community-care", label: "Community Care" },
   { href: "/festival", label: "Festival" },
   { href: "/contact", label: "Contact" },

@@ -2,13 +2,16 @@ import type { Metadata } from "next";
 import { Eyebrow, Headline, Section } from "@/components/ui";
 import EnquiryForm from "@/components/EnquiryForm";
 import { org } from "@/lib/content";
+import { getSiteSettings } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
   description: `Contact ${org.fullName}.`,
 };
 
-export default function Contact() {
+export default async function Contact() {
+  const settings = await getSiteSettings();
+
   return (
     <>
       <Section className="bg-forest-900 text-white">
@@ -26,20 +29,27 @@ export default function Contact() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Eyebrow>Reach Us</Eyebrow>
-            {/* PLACEHOLDER — real address, phone and social links pending */}
             <dl className="mt-8 space-y-6">
               <div>
                 <dt className="text-xs font-bold tracking-[0.16em] text-ink/45 uppercase">Location</dt>
-                <dd className="mt-1.5 text-[15px] text-ink/80">{org.address}</dd>
+                <dd className="mt-1.5 text-[15px] text-ink/80">{settings.address}</dd>
               </div>
-              <div>
-                <dt className="text-xs font-bold tracking-[0.16em] text-ink/45 uppercase">Email</dt>
-                <dd className="mt-1.5 text-[15px] text-ink/80">{org.email}</dd>
-              </div>
-              <div>
-                <dt className="text-xs font-bold tracking-[0.16em] text-ink/45 uppercase">Phone</dt>
-                <dd className="mt-1.5 text-[15px] text-ink/80">{org.phone}</dd>
-              </div>
+              {settings.email && (
+                <div>
+                  <dt className="text-xs font-bold tracking-[0.16em] text-ink/45 uppercase">Email</dt>
+                  <dd className="mt-1.5 text-[15px] text-ink/80">
+                    <a href={`mailto:${settings.email}`} className="underline decoration-gold-500 underline-offset-2">
+                      {settings.email}
+                    </a>
+                  </dd>
+                </div>
+              )}
+              {settings.phone && (
+                <div>
+                  <dt className="text-xs font-bold tracking-[0.16em] text-ink/45 uppercase">Phone</dt>
+                  <dd className="mt-1.5 text-[15px] text-ink/80">{settings.phone}</dd>
+                </div>
+              )}
             </dl>
 
             <p className="mt-8 rounded-card bg-forest-50 px-5 py-4 text-sm leading-relaxed text-ink/70">

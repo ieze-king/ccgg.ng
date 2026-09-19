@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import { Eyebrow, Headline, Section } from "@/components/ui";
-import { programmes, weeklyRhythm, featuredVideoId, org } from "@/lib/content";
+import { programmes, weeklyRhythm } from "@/lib/content";
+import { getSiteSettings, getEpisodes } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Media",
   description: "The CCGG Media Network — civic education you can watch, listen to and share.",
 };
 
-export default function Media() {
+export const revalidate = 60;
+
+export default async function Media() {
+  const [settings, episodes] = await Promise.all([getSiteSettings(), getEpisodes()]);
+  const featuredVideoId = settings.featuredVideoId;
+
   return (
     <>
       <Section className="bg-forest-900 text-white">
@@ -62,7 +68,37 @@ export default function Media() {
         </div>
       </Section>
 
-      <Section className="bg-white">
+      {episodes.length > 0 && (
+        <Section className="bg-white">
+          <Eyebrow>Latest Episodes</Eyebrow>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {episodes.slice(0, 6).map((e) => (
+              <article key={e._id}>
+                <div className="aspect-video overflow-hidden rounded-card bg-forest-950">
+                  <iframe
+                    className="h-full w-full"
+                    src={`https://www.youtube-nocookie.com/embed/${e.youtubeId}`}
+                    title={e.title}
+                    loading="lazy"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+                {e.programme && (
+                  <p className="mt-3 text-xs font-bold tracking-[0.14em] text-gold-600 uppercase">
+                    {e.programme}
+                  </p>
+                )}
+                <h2 className="mt-1.5 font-display text-[17px] leading-snug font-bold text-forest-900">
+                  {e.title}
+                </h2>
+              </article>
+            ))}
+          </div>
+        </Section>
+      )}
+
+      <Section className="bg-forest-50">
         <Eyebrow>Every Week</Eyebrow>
         <Headline as="h2" className="mt-5 max-w-xl text-[clamp(1.8rem,3.6vw,2.6rem)] leading-[1.06] text-forest-900">
           A civic rhythm you can <span className="accent-word text-gold-600">follow</span>.
@@ -78,10 +114,6 @@ export default function Media() {
         <p className="mt-10 text-sm text-ink/55">
           Full programmes on YouTube &middot; short-form on Instagram and TikTok &middot;
           parish distribution via WhatsApp.
-          {org.socials.youtube === "#" && (
-            /* PLACEHOLDER — channel links pending */
-            <span className="ml-1 text-ink/40">Channel links coming soon.</span>
-          )}
         </p>
       </Section>
     </>
