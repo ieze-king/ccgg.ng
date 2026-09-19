@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+build
+.DS_Store
+*.pem
+.env*
+!.env.example
+.vercel
+next-env.d.ts
+
+# Internal source material. THIS REPOSITORY IS PUBLIC — the workbook contains
+# budget, risk and staff information that must not be published. Poster images
+# used by the site live in public/posters/ instead.
+ccgg.assets/

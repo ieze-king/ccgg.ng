@@ -1,42 +1,63 @@
 # ccgg.ng
 
-Static coming soon page. One file, no dependencies, no build step.
+Website for **CCGG — The Church for Community Care & Good Governance**, a
+Church-inspired, non-partisan civic education and community-care initiative in
+Enugu State, Nigeria.
 
-## Editing the copy
+Next.js 16 (App Router) + Tailwind 4, deployed on Vercel.
 
-Everything you'd want to change is in `index.html`:
+## Running locally
 
-- The `<!-- EDIT ME -->` block in `<head>` — page title, description, social preview text.
-- The `<main>` element — eyebrow, headline, paragraph.
+    npm install
+    npm run dev        # http://localhost:3000
 
-The word wrapped in `<em>` renders in italic accent colour. Move it to change emphasis.
+## Where the content lives
 
-## Local preview
+`lib/content.ts` holds all site content as typed data, sourced from the 2026
+Master Project & Implementation Workbook. Page components read from it, so
+copy changes happen in one file.
 
-    npx serve .        # or: python3 -m http.server 8000
+Items marked `PLACEHOLDER` need real values before launch — see
+"Outstanding" below.
 
-Or just open `index.html` in a browser — it has no server dependencies.
+## Brand
 
-## Deploying
+Sampled from the official CCGG posters and defined as Tailwind tokens in
+`app/globals.css`:
 
-Vercel is connected to this GitHub repo. Pushing to `main` deploys to production;
-any other branch gets a preview URL.
+| Token | Value |
+|---|---|
+| `forest-900` | `#064B15` — primary green |
+| `forest-950` | `#03260A` |
+| `gold-500` | `#F9BD1F` — accent |
+| `cream` | `#FFF8E7` |
 
-## DNS (Whogohost → Vercel)
+Type: **Archivo** for display and UI, **Newsreader** for long-form reading.
+The poster signature — a white headline with one word in gold italic — is the
+`.accent-word` class.
 
-The exact record values are **project-specific** and shown on the domain card in
-Vercel → Project → Settings → Domains. Copy them from there rather than from any
-guide — Vercel now assigns per-project anycast IPs and CNAME targets.
+## Forms
 
-Typical shape, set in Whogohost's DNS manager:
+Contact, parish registration, volunteer and partnership forms all post to
+`/api/enquiry`. Delivery uses the Resend REST API and requires:
 
-| Type  | Host / Name | Value                             |
-|-------|-------------|-----------------------------------|
-| A     | `@`         | IP shown on the Vercel domain card |
-| CNAME | `www`       | target shown on the Vercel domain card |
+    RESEND_API_KEY=...
+    ENQUIRY_TO=someone@example.com
+    ENQUIRY_FROM="CCGG Website <noreply@yourdomain>"   # optional
 
-Delete any pre-existing `@` A record or `www` CNAME that points at Whogohost's
-parking / cPanel server first — duplicates cause intermittent failures.
+Until those are set the endpoint returns `503` with an explanatory message
+rather than silently discarding a submission.
 
-If a CAA record exists, it must permit Let's Encrypt, or TLS certificate
-issuance will fail.
+## Outstanding
+
+- Real logo file (SVG) — currently a placeholder extracted from the posters
+- YouTube channel URL and launch video ID (`featuredVideoId` in `lib/content.ts`)
+- Contact address, phone, social handles
+- Leadership names and photographs
+- Festival dates and venue
+- CMS wiring (Sanity) for news, blog and episode listings
+
+## Note on this repository
+
+This repo is **public**. `ccgg.assets/` is git-ignored because the workbook
+contains internal budget, risk and staffing material.

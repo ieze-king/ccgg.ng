@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── CCGG brand, sampled from the official posters ─────────────── */
+  --color-forest-950: #03260A;
+  --color-forest-900: #064B15;   /* primary brand green */
+  --color-forest-800: #0A5A1B;
+  --color-forest-700: #205B2B;
+  --color-forest-600: #2F7239;
+  --color-forest-50:  #F1F7F1;
+
+  --color-gold-500: #F9BD1F;     /* brand gold */
+  --color-gold-600: #E0A50F;
+  --color-gold-100: #FDF0CC;
+
+  --color-cream: #FFF8E7;        /* cut-out outline colour on posters */
+  --color-ink: #102013;
+
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-read: var(--font-newsreader), Georgia, serif;
+
+  --radius-card: 0.75rem;
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    background: #fff;
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--color-gold-500); color: var(--color-forest-950); }
+  :focus-visible {
+    outline: 3px solid var(--color-gold-500);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  /* the poster signature: white headline with one word in gold italic */
+  .accent-word { color: var(--color-gold-500); font-style: italic; }
+
+  /* torn gold band, echoing the posters' ripped-paper edge */
+  .torn-gold {
+    background: var(--color-gold-500);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40' preserveAspectRatio='none'%3E%3Cpath d='M0 14 C 60 4, 120 22, 190 12 S 320 2, 400 16 S 540 6, 620 18 S 760 8, 840 14 S 980 4, 1070 16 S 1160 10, 1200 8 L1200 40 L0 40 Z' fill='%23000'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40' preserveAspectRatio='none'%3E%3Cpath d='M0 14 C 60 4, 120 22, 190 12 S 320 2, 400 16 S 540 6, 620 18 S 760 8, 840 14 S 980 4, 1070 16 S 1160 10, 1200 8 L1200 40 L0 40 Z' fill='%23000'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
