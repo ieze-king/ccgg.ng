@@ -25,7 +25,7 @@ export default function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 bg-forest-900/95 backdrop-blur supports-[backdrop-filter]:bg-forest-900/85">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 lg:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-2.5 lg:px-8">
         <Logo />
 
         <nav className="hidden items-center gap-5 xl:gap-7 lg:flex" aria-label="Primary">

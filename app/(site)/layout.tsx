@@ -34,8 +34,21 @@ export const metadata: Metadata = {
     siteName: org.name,
     title: `${org.name} — ${org.fullName}`,
     description: org.nature,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${org.name} — ${org.fullName}`,
+      },
+    ],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: {
+    card: "summary_large_image",
+    title: `${org.name} — ${org.fullName}`,
+    description: org.nature,
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({
