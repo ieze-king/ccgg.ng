@@ -1,6 +1,6 @@
 import type { SiteSettings } from "@/sanity/lib/types";
 
-/** Brand marks as inline SVG — no icon dependency, no extra request. */
+/** Brand marks as inline SVG: no icon dependency, no extra request. */
 const icons = {
   youtube: (
     <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6Z" />
@@ -80,7 +80,7 @@ export default function SocialLinks({
               ) : (
                 <span
                   aria-hidden="true"
-                  title={`${labels[key]} — link not set yet`}
+                  title={`${labels[key]}: link not set yet`}
                   className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/[0.06] text-white/25"
                 >
                   {content}

@@ -3,7 +3,7 @@
  *
  * Seed data below is taken from the 2026 Master Project & Implementation
  * Workbook. When the Sanity project exists, `lib/sanity/queries.ts` takes
- * over and these exports become the fallback — the shapes are identical,
+ * over and these exports become the fallback. The shapes are identical,
  * so no page component changes.
  *
  * Anything marked PLACEHOLDER needs a real value before launch.
@@ -24,7 +24,7 @@ export const org = {
   phone: "+234 000 000 0000",
   address: "Enugu State, Nigeria",
   socials: {
-    youtube: "#",   // PLACEHOLDER — channel URL
+    youtube: "#",   // PLACEHOLDER: channel URL
     facebook: "#",  // PLACEHOLDER
     instagram: "#", // PLACEHOLDER
     tiktok: "#",    // PLACEHOLDER
@@ -129,7 +129,7 @@ export const campaigns: Campaign[] = [
   },
   {
     src: "/posters/beyond-the-vote.jpg",
-    title: "Beyond the vote — seek accountability",
+    title: "Beyond the vote: seek accountability",
     blurb:
       "It is not enough only to vote. The real task is holding leaders accountable to their promises.",
   },
@@ -235,5 +235,5 @@ export const leadership = [
   { role: "Monitoring & Evaluation Unit", responsibility: "Targets, data, surveys, dashboards, impact measurement and annual reporting." },
 ];
 
-/** PLACEHOLDER — replace with the real YouTube IDs once the channel is live. */
+/** PLACEHOLDER: replace with the real YouTube IDs once the channel is live. */
 export const featuredVideoId = "";

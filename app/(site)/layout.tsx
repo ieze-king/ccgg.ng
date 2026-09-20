@@ -24,28 +24,28 @@ const newsreader = Newsreader({
 export const metadata: Metadata = {
   metadataBase: new URL("https://ccgg.ng"),
   title: {
-    default: `${org.name} — ${org.fullName}`,
-    template: `%s — ${org.name}`,
+    default: `${org.name} | ${org.fullName}`,
+    template: `%s | ${org.name}`,
   },
   description: `${org.nature} ${org.tagline}.`,
   openGraph: {
     type: "website",
     url: "https://ccgg.ng",
     siteName: org.name,
-    title: `${org.name} — ${org.fullName}`,
+    title: `${org.name} | ${org.fullName}`,
     description: org.nature,
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: `${org.name} — ${org.fullName}`,
+        alt: `${org.name} | ${org.fullName}`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${org.name} — ${org.fullName}`,
+    title: `${org.name} | ${org.fullName}`,
     description: org.nature,
     images: ["/og-image.png"],
   },

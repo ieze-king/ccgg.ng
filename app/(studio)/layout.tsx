@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 /**
  * The Studio gets its own root layout: no site header, no footer, and
- * crucially no globals.css — Tailwind's preflight fights Sanity's own
+ * crucially no globals.css, because Tailwind's preflight fights Sanity's own
  * styling, which is what put an unstyled CCGG logo above the editor.
  */
 export const metadata: Metadata = {

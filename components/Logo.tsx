@@ -3,7 +3,7 @@ import Link from "next/link";
 import { org } from "@/lib/content";
 
 /**
- * The logo is green-and-white — the Nigerian flag — so it cannot sit
+ * The logo is green-and-white, the Nigerian flag, so it cannot sit
  * directly on the green header without the green half disappearing into
  * the background. It rides on a white plate instead, which keeps the
  * flag reading intact and, at page level, repeats it: green bar, white

@@ -5,7 +5,7 @@ import { getSiteSettings } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Civic Festival",
-  description: `${festival.name} — ${festival.theme}`,
+  description: `${festival.name}: ${festival.theme}`,
 };
 
 export const revalidate = 60;

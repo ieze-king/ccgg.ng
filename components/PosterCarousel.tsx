@@ -7,7 +7,7 @@ import type { Campaign } from "@/lib/content";
 /**
  * Swipeable campaign gallery.
  *
- * Native horizontal scrolling with CSS snap does the work — so touch
+ * Native horizontal scrolling with CSS snap does the work, so touch
  * swipe, trackpad, keyboard and screen readers all behave correctly
  * without a carousel library. The buttons drive the same scroll.
  */

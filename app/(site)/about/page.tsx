@@ -20,7 +20,7 @@ export default function About() {
           CCGG combines Catholic social teaching and the Church&rsquo;s concern for the
           common good with professional civic education, evidence-based public
           conversations, community service and digital media. It is designed as a
-          continuing annual institution &mdash; not an election-season activity.
+          continuing annual institution, not an election-season activity.
         </p>
       </Section>
 

@@ -4,7 +4,7 @@ import { careProgrammes } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Community Care",
-  description: "Turning concern for the common good into practical service — scholarships, health outreach, skills, and community grants.",
+  description: "Turning concern for the common good into practical service: scholarships, health outreach, skills, and community grants.",
 };
 
 export default function CommunityCare() {
@@ -41,8 +41,8 @@ export default function CommunityCare() {
           <p className="mt-5 font-read text-lg leading-[1.6] text-ink text-pretty">
             All assistance programmes use documented eligibility criteria,
             transparent records, safeguarding procedures and appropriate financial
-            controls. Support is given on the basis of need and published criteria
-            &mdash; never on the basis of politics.
+            controls. Support is given on the basis of need and published criteria,
+            never on the basis of politics.
           </p>
           <div className="mt-8">
             <ButtonLink href="/get-involved" variant="dark">Support this work</ButtonLink>

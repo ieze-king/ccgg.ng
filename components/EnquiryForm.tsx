@@ -42,7 +42,7 @@ export default function EnquiryForm({
       }
       setState("sent");
     } catch {
-      setError("Network problem — please try again.");
+      setError("Network problem. Please try again.");
       setState("error");
     }
   }

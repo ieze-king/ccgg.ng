@@ -26,7 +26,7 @@ export default function GetInvolved() {
         </Headline>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
           Register a parish for the festival, volunteer with a programme, or
-          partner with us &mdash; without ever compromising editorial independence.
+          partner with us, without ever compromising editorial independence.
         </p>
       </Section>
 
@@ -80,7 +80,7 @@ export default function GetInvolved() {
             </Headline>
             <p className="mt-5 text-[15px] leading-relaxed text-ink/70">
               Research, media production, community outreach, youth work, event
-              logistics &mdash; there is room for many kinds of contribution.
+              logistics. There is room for many kinds of contribution.
             </p>
           </div>
           <div className="lg:col-span-7">

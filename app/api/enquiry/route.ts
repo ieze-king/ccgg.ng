@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
  *
  * Uses Resend's REST API directly (no SDK dependency). Until
  * RESEND_API_KEY and ENQUIRY_TO are set, the route refuses rather than
- * silently discarding a submission — a registration that vanishes is
+ * silently discarding a submission. A registration that vanishes is
  * worse than one that reports a problem.
  */
 
@@ -49,7 +49,7 @@ export async function POST(request: Request) {
   const apiKey = process.env.RESEND_API_KEY;
 
   // Citizen questions go to the civic desk; everything else is
-  // administrative. ENQUIRY_TO_CIVIC is optional — without it both
+  // administrative. ENQUIRY_TO_CIVIC is optional; without it both
   // streams fall back to the single ENQUIRY_TO address.
   const to =
     body.kind === "contact"
@@ -87,7 +87,7 @@ export async function POST(request: Request) {
       from,
       to: [to],
       reply_to: email,
-      subject: `CCGG website — ${body.kind ?? "enquiry"} — ${name}`,
+      subject: `CCGG website: ${body.kind ?? "enquiry"} from ${name}`,
       text: lines,
     }),
   });

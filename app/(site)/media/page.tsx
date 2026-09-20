@@ -6,7 +6,7 @@ import { getSiteSettings, getEpisodes } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Media",
-  description: "The CCGG Media Network — civic education you can watch, listen to and share.",
+  description: "The CCGG Media Network: civic education you can watch, listen to and share.",
 };
 
 export const revalidate = 60;
@@ -23,12 +23,12 @@ export default async function Media() {
           Civic education you can <span className="accent-word">watch</span>.
         </Headline>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
-          Twelve programme formats, published continuously &mdash; from deep
+          Twelve programme formats, published continuously, from deep
           conversations to sixty-second civic lessons.
         </p>
       </Section>
 
-      {/* Featured video — YouTube-hosted */}
+      {/* Featured video, YouTube-hosted */}
       <Section className="bg-white">
         <Eyebrow>Featured</Eyebrow>
         <div className="mt-8 max-w-4xl">
@@ -43,7 +43,7 @@ export default async function Media() {
               />
             </div>
           ) : (
-            /* PLACEHOLDER — swap in the YouTube ID via lib/content.ts */
+            /* PLACEHOLDER: swap in the YouTube ID via lib/content.ts */
             <div className="flex aspect-video flex-col items-center justify-center rounded-card border-2 border-dashed border-forest-900/20 bg-forest-50 text-center">
               <p className="font-display text-lg font-bold text-forest-900">
                 Launch video coming soon

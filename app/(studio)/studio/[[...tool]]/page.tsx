@@ -17,7 +17,7 @@ export default function StudioPage() {
           Studio not connected yet
         </h1>
         <p className="mt-4 text-[15px] leading-relaxed text-ink/70">
-          The CMS is fully built &mdash; schemas, structure and queries are in
+          The CMS is fully built. Schemas, structure and queries are all in
           the repository. It needs a Sanity project to connect to.
         </p>
         <ol className="mt-6 space-y-3 text-[15px] leading-relaxed text-ink/75">

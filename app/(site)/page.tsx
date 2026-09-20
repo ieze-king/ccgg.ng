@@ -32,7 +32,7 @@ export default function Home() {
 
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
               We help citizens learn <em className="text-gold-500 not-italic font-semibold">how</em> to
-              think, ask the right questions, and make informed decisions &mdash;
+              think, ask the right questions, and make informed decisions,
               through civic education, evidence, and service to the common good.
             </p>
 
@@ -136,7 +136,7 @@ export default function Home() {
             </Headline>
             <p className="mt-5 text-[15px] leading-relaxed text-white/70">
               CCGG applies one consistent method. We publish it so that any
-              citizen can check our work &mdash; and hold us to it.
+              citizen can check our work, and hold us to it.
             </p>
             <div className="mt-8">
               <ButtonLink href="/standards" variant="ghost">

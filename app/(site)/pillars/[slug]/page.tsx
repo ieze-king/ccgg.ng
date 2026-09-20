@@ -42,7 +42,7 @@ export default async function PillarPage({ params }: Params) {
             </li>
           ))}
         </ul>
-        {/* PLACEHOLDER — long-form description per pillar, pending copy */}
+        {/* PLACEHOLDER: long-form description per pillar, pending copy */}
       </Section>
 
       <Section className="bg-forest-50">
