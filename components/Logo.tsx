@@ -9,7 +9,12 @@ import { org } from "@/lib/content";
  */
 export default function Logo({ compact = false }: { compact?: boolean }) {
   return (
-    <Link href="/" className="group flex items-center gap-3" aria-label={`${org.name} home`}>
+    <Link
+      href="/"
+      className="group flex items-center gap-3 rounded-md transition-opacity hover:opacity-80"
+      aria-label={`${org.name} home`}
+      title="Go to homepage"
+    >
       <Image
         src="/brand/ccgg-logo-white.png"
         alt=""
@@ -19,7 +24,7 @@ export default function Logo({ compact = false }: { compact?: boolean }) {
         className={compact ? "h-9 w-auto" : "h-11 w-auto"}
       />
       {!compact && (
-        <span className="hidden max-w-[15ch] text-[11px] leading-tight font-medium text-white/70 sm:block">
+        <span className="hidden max-w-[15ch] text-[11px] leading-tight font-medium text-white/70 transition-colors group-hover:text-gold-500 sm:block">
           {org.fullName}
         </span>
       )}
