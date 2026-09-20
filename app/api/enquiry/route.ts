@@ -55,7 +55,10 @@ export async function POST(request: Request) {
     body.kind === "contact"
       ? process.env.ENQUIRY_TO_CIVIC ?? process.env.ENQUIRY_TO
       : process.env.ENQUIRY_TO;
-  const from = process.env.ENQUIRY_FROM ?? "CCGG Website <onboarding@resend.dev>";
+  // Must be an address on the Resend-verified domain. Resend's shared
+  // onboarding@resend.dev sender stays restricted even after you verify
+  // your own domain, so it is not a usable default here.
+  const from = process.env.ENQUIRY_FROM ?? "CCGG Website <forms@ccgg.ng>";
 
   if (!apiKey || !to) {
     console.error("[enquiry] delivery not configured; submission not stored", {
@@ -90,9 +93,15 @@ export async function POST(request: Request) {
   });
 
   if (!res.ok) {
-    console.error("[enquiry] resend failed", res.status, await res.text());
+    const detail = await res.text();
+    console.error("[enquiry] resend failed", res.status, detail);
     return NextResponse.json(
-      { error: "We could not send that just now. Please try again shortly." },
+      {
+        error: "We could not send that just now. Please try again shortly.",
+        // Resend's own error text. It names the misconfiguration (sender
+        // domain, recipient restriction, bad key) and contains no secrets.
+        detail: detail.slice(0, 300),
+      },
       { status: 502 }
     );
   }
