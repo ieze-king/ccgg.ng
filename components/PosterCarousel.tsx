@@ -64,7 +64,7 @@ export default function PosterCarousel({ items }: { items: Campaign[] }) {
     >
       <ul
         ref={trackRef}
-        className="scrollbar-none -mx-5 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-5 pb-2 lg:mx-0 lg:px-0"
+        className="scrollbar-none -mx-5 flex snap-x snap-mandatory scroll-pl-5 gap-5 overflow-x-auto scroll-smooth px-5 pb-2 lg:mx-0 lg:scroll-pl-0 lg:px-0"
         tabIndex={0}
       >
         {items.map((c, i) => (
