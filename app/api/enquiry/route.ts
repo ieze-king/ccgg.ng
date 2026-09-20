@@ -47,7 +47,14 @@ export async function POST(request: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.ENQUIRY_TO;
+
+  // Citizen questions go to the civic desk; everything else is
+  // administrative. ENQUIRY_TO_CIVIC is optional — without it both
+  // streams fall back to the single ENQUIRY_TO address.
+  const to =
+    body.kind === "contact"
+      ? process.env.ENQUIRY_TO_CIVIC ?? process.env.ENQUIRY_TO
+      : process.env.ENQUIRY_TO;
   const from = process.env.ENQUIRY_FROM ?? "CCGG Website <onboarding@resend.dev>";
 
   if (!apiKey || !to) {

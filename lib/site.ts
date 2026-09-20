@@ -14,11 +14,12 @@ export async function getSiteSettings() {
   const cms = await sanityFetch<SiteSettings>(siteSettingsQuery, null);
 
   const clean = (v?: string) => (v && v.trim().length > 0 ? v.trim() : undefined);
-  const seedOrNothing = (v: string) =>
-    v.includes("000 000") || v === "hello@ccgg.ng" ? undefined : v;
+  // phone is still a placeholder; the addresses are real
+  const seedOrNothing = (v: string) => (v.includes("000 000") ? undefined : v);
 
   return {
-    email: clean(cms?.email) ?? seedOrNothing(org.email),
+    email: clean(cms?.email) ?? org.email,
+    civicEmail: org.civicEmail,
     phone: clean(cms?.phone) ?? seedOrNothing(org.phone),
     address: clean(cms?.address) ?? org.address,
     featuredVideoId: clean(cms?.featuredVideoId) ?? seedVideoId ?? "",

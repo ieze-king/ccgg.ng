@@ -36,12 +36,29 @@ export default async function Contact() {
               </div>
               {settings.email && (
                 <div>
-                  <dt className="text-xs font-bold tracking-[0.16em] text-ink/45 uppercase">Email</dt>
+                  <dt className="text-xs font-bold tracking-[0.16em] text-ink/45 uppercase">
+                    General enquiries
+                  </dt>
                   <dd className="mt-1.5 text-[15px] text-ink/80">
                     <a href={`mailto:${settings.email}`} className="underline decoration-gold-500 underline-offset-2">
                       {settings.email}
                     </a>
                   </dd>
+                </div>
+              )}
+              {settings.civicEmail && (
+                <div>
+                  <dt className="text-xs font-bold tracking-[0.16em] text-ink/45 uppercase">
+                    Citizen questions
+                  </dt>
+                  <dd className="mt-1.5 text-[15px] text-ink/80">
+                    <a href={`mailto:${settings.civicEmail}`} className="underline decoration-gold-500 underline-offset-2">
+                      {settings.civicEmail}
+                    </a>
+                  </dd>
+                  <p className="mt-1 text-xs text-ink/50">
+                    Questions here may be answered on air.
+                  </p>
                 </div>
               )}
               {settings.phone && (

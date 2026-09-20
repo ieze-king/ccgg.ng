@@ -19,8 +19,8 @@ export const org = {
     "Facts before opinions; evidence before claims; service before publicity; common good before personal interest.",
   nature:
     "A Church-inspired, non-partisan civic education and community-care initiative.",
-  // PLACEHOLDER — supply real contact details
   email: "hello@ccgg.ng",
+  civicEmail: "civics@ccgg.ng",
   phone: "+234 000 000 0000",
   address: "Enugu State, Nigeria",
   socials: {
