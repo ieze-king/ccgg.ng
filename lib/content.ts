@@ -106,6 +106,41 @@ export const pillars: Pillar[] = [
   },
 ];
 
+
+export type Campaign = {
+  src: string;
+  title: string;
+  blurb: string;
+};
+
+/** Published campaign graphics, as distributed on social and via parishes. */
+export const campaigns: Campaign[] = [
+  {
+    src: "/posters/how-to-think.jpg",
+    title: "We don't tell people what to think",
+    blurb:
+      "We help citizens learn how to think, ask the right questions, and make informed decisions.",
+  },
+  {
+    src: "/posters/good-governance.jpg",
+    title: "What is good governance, in simple terms?",
+    blurb:
+      "Good governance is evident when public power is exercised fairly, transparently and effectively to deliver human development and respect rights.",
+  },
+  {
+    src: "/posters/beyond-the-vote.jpg",
+    title: "Beyond the vote — seek accountability",
+    blurb:
+      "It is not enough only to vote. The real task is holding leaders accountable to their promises.",
+  },
+  {
+    src: "/posters/true-nationhood.jpg",
+    title: "True nationhood is built by care for the community",
+    blurb:
+      "Any strong nation begins with citizens who take responsibility for one another and the places they call home.",
+  },
+];
+
 export type Programme = {
   title: string;
   format: string;

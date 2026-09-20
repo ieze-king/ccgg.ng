@@ -40,6 +40,10 @@
 }
 
 @layer components {
+  /* horizontal galleries: keep scrolling, lose the bar */
+  .scrollbar-none { scrollbar-width: none; -ms-overflow-style: none; }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+
   /* the poster signature: white headline with one word in gold italic */
   .accent-word { color: var(--color-gold-500); font-style: italic; }
 

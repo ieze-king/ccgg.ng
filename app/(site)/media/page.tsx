@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Eyebrow, Headline, Section } from "@/components/ui";
-import { programmes, weeklyRhythm } from "@/lib/content";
+import { programmes, weeklyRhythm, campaigns } from "@/lib/content";
+import PosterCarousel from "@/components/PosterCarousel";
 import { getSiteSettings, getEpisodes } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -52,6 +53,25 @@ export default async function Media() {
               </p>
             </div>
           )}
+        </div>
+      </Section>
+
+      <Section className="bg-white" id="campaigns">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div>
+            <Eyebrow>Campaign Graphics</Eyebrow>
+            <Headline as="h2" className="mt-5 max-w-xl text-[clamp(1.8rem,3.6vw,2.6rem)] leading-[1.06] text-forest-900">
+              Civic lessons made <span className="accent-word text-gold-600">shareable</span>.
+            </Headline>
+            <p className="mt-4 max-w-lg text-[15px] leading-relaxed text-ink/65">
+              Designed for social platforms and parish WhatsApp groups, so a
+              single civic idea travels further than any one meeting could.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-10">
+          <PosterCarousel items={campaigns} />
         </div>
       </Section>
 
