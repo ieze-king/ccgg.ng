@@ -37,7 +37,7 @@ export default function Logo({ compact = false }: { compact?: boolean }) {
       </span>
 
       {!compact && (
-        <span className="hidden max-w-[16ch] text-[11px] leading-tight font-medium text-white/70 transition-colors group-hover:text-gold-500 sm:block">
+        <span className="block max-w-[18ch] text-[10.5px] leading-tight font-medium text-white/70 transition-colors group-hover:text-gold-500 sm:max-w-[16ch] sm:text-[11px]">
           {org.fullName}
         </span>
       )}
