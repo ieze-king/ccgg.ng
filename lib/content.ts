@@ -194,6 +194,11 @@ export const assessmentSequence = [
 export const festival = {
   name: "CCGG Community & Civic Festival",
   theme: "Our Faith • Our Community • Our Future",
+  /** Official registration portal, run by CIDJAB. Responses stay with them. */
+  registrationUrl: "https://forms.gle/YKUcrb6gXkK6bQtX8",
+  registrationOpen: true,
+  openTo:
+    "Young people, mothers, fathers, youths, parishes, choirs and talented individuals",
   categories: [
     { name: "Music", items: "Choir · solo singing · original song · civic song · hymn arrangement" },
     { name: "Culture", items: "Igbo proverbs · cultural dance · storytelling · drama · cultural presentation" },

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Eyebrow, Headline, Section } from "@/components/ui";
 import EnquiryForm from "@/components/EnquiryForm";
+import RegisterCTA from "@/components/RegisterCTA";
 
 export const metadata: Metadata = {
   title: "Get Involved",
@@ -28,6 +29,10 @@ export default function GetInvolved() {
           Register a parish for the festival, volunteer with a programme, or
           partner with us, without ever compromising editorial independence.
         </p>
+      </Section>
+
+      <Section className="bg-forest-50" id="festival-registration">
+        <RegisterCTA />
       </Section>
 
       <Section className="bg-white" id="parish">

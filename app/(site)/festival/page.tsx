@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ButtonLink, Eyebrow, Headline, Section } from "@/components/ui";
 import { festival } from "@/lib/content";
 import { getSiteSettings } from "@/lib/site";
+import RegisterCTA from "@/components/RegisterCTA";
 
 export const metadata: Metadata = {
   title: "Civic Festival",
@@ -44,8 +45,22 @@ export default async function Festival() {
           </dl>
         )}
         <div className="mt-9">
-          <ButtonLink href="/get-involved">Register your parish</ButtonLink>
+          <a
+            href={festival.registrationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-gold-500 px-6 py-3 text-sm font-bold text-forest-950 transition-colors hover:bg-gold-600"
+          >
+            Register now
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
         </div>
+      </Section>
+
+      <Section className="bg-forest-50">
+        <RegisterCTA />
       </Section>
 
       <Section className="bg-white">
@@ -76,7 +91,17 @@ export default async function Festival() {
             </p>
           </div>
           <div className="lg:col-span-4 lg:justify-self-end">
-            <ButtonLink href="/get-involved" variant="dark">Enter the challenge</ButtonLink>
+            <a
+              href={festival.registrationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-forest-900 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-forest-800"
+            >
+              Register now
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
           </div>
         </div>
       </Section>
