@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ButtonLink, Eyebrow, Headline, Section } from "@/components/ui";
 import {
   org, vision, pillars, programmes, calendar2026,
-  governanceIndicators, assessmentSequence,
+  governanceIndicators, assessmentSequence, festival,
 } from "@/lib/content";
 
 export default function Home() {
@@ -73,6 +73,80 @@ export default function Home() {
         </div>
         <div className="torn-gold h-7 w-full" aria-hidden="true" />
       </section>
+
+      {/* ── Festival: the flagship event, and imminent ─────────── */}
+      <Section className="bg-forest-50" id="festival">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-5">
+            <Image
+              src={festival.flyer}
+              alt={`${festival.name}, flag-off ${festival.flagOff}`}
+              width={845}
+              height={1200}
+              className="mx-auto w-full max-w-sm rounded-card shadow-xl ring-1 ring-forest-900/10 lg:max-w-none"
+              priority
+            />
+          </div>
+
+          <div className="lg:col-span-7">
+            <Eyebrow>Flagship Event</Eyebrow>
+            <Headline as="h2" className="mt-5 text-[clamp(1.9rem,4vw,3rem)] leading-[1.05] text-forest-900">
+              {festival.name}
+            </Headline>
+
+            <dl className="mt-7 flex flex-wrap gap-x-10 gap-y-4">
+              <div>
+                <dt className="text-xs font-bold tracking-[0.16em] text-ink/45 uppercase">Flag-off</dt>
+                <dd className="mt-1 font-display text-xl font-bold text-forest-900">
+                  <time dateTime={festival.flagOffISO}>{festival.flagOff}</time>
+                </dd>
+              </div>
+              <div>
+                <dt className="text-xs font-bold tracking-[0.16em] text-ink/45 uppercase">Prizes</dt>
+                <dd className="mt-1 font-display text-xl font-bold text-gold-600">
+                  {festival.prize}
+                </dd>
+              </div>
+            </dl>
+
+            <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-ink/70">
+              {festival.openTo} are invited to take part, across talent,
+              creativity, music, culture, sports and civic engagement.
+            </p>
+
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {festival.featuring.map((f) => (
+                <li
+                  key={f}
+                  className="rounded-full bg-white px-3.5 py-1.5 text-xs font-medium text-forest-700 ring-1 ring-forest-900/10"
+                >
+                  {f}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <a
+                href={festival.registrationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-gold-500 px-7 py-3.5 text-sm font-bold text-forest-950 transition-colors hover:bg-gold-600"
+              >
+                Register now
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
+              <ButtonLink href="/festival" variant="dark">Festival details</ButtonLink>
+            </div>
+
+            <p className="mt-5 text-xs leading-relaxed text-ink/50">
+              Registration opens in a new tab. The form asks for file uploads,
+              so a Google account is needed. Enquiries: {festival.enquiryPhone}.
+            </p>
+          </div>
+        </div>
+      </Section>
 
       {/* ── Vision ───────────────────────────────────────────────── */}
       <Section className="bg-white">

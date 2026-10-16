@@ -194,11 +194,28 @@ export const assessmentSequence = [
 export const festival = {
   name: "CCGG Community & Civic Festival",
   theme: "Our Faith • Our Community • Our Future",
-  /** Official registration portal, run by CIDJAB. Responses stay with them. */
+  /** Official registration portal, run by CIDJAP. Responses stay with them. */
   registrationUrl: "https://forms.gle/YKUcrb6gXkK6bQtX8",
   registrationOpen: true,
+  flagOff: "24 October 2026",
+  flagOffISO: "2026-10-24",
+  prize: "Over \u20a610,000,000 in prizes",
+  enquiryPhone: "09037576995",
+  flyer: "/posters/festival-flyer.jpg",
   openTo:
     "Young people, mothers, fathers, youths, parishes, choirs and talented individuals",
+  featuring: [
+    "Choral Competition",
+    "Talent Hunt / Creativity",
+    "CWO Dance Competition",
+    "CMO Wisdom Challenge",
+    "Youth Sports Competition",
+    "Community Development Ideas",
+    "Good Governance / Leadership Debate",
+    "Carol of 9 Lessons",
+    "Cultural Expression",
+    "Civic Education",
+  ],
   categories: [
     { name: "Music", items: "Choir · solo singing · original song · civic song · hymn arrangement" },
     { name: "Culture", items: "Igbo proverbs · cultural dance · storytelling · drama · cultural presentation" },

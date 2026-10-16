@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo, Newsreader } from "next/font/google";
 import "./globals.css";
+import FestivalBanner from "@/components/FestivalBanner";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { org } from "@/lib/content";
@@ -63,6 +64,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <FestivalBanner />
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
