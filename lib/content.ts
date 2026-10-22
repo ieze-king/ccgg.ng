@@ -263,5 +263,19 @@ export const leadership = [
   { role: "Monitoring & Evaluation Unit", responsibility: "Targets, data, surveys, dashboards, impact measurement and annual reporting." },
 ];
 
-/** PLACEHOLDER: replace with the real YouTube IDs once the channel is live. */
-export const featuredVideoId = "";
+/** The introductory film on CCGG TV. Overridable from Site Settings. */
+export const featuredVideoId = "mEZ59hVea5w";
+
+export const youtubeChannelId = "UC3GO-el-hMPx1B9b46HIpCQ";
+
+/**
+ * Published videos, used when no episodes exist in the CMS yet. Once the
+ * team starts adding Media Episodes in the studio, those take over.
+ */
+export const channelVideos = [
+  { youtubeId: "mEZ59hVea5w", title: "Introductory video for CCGG" },
+  { youtubeId: "zNSE2dAmvx0", title: "Good governance begins with caring for people" },
+  { youtubeId: "oLm5NGXcykw", title: "Honest street opinions" },
+  { youtubeId: "_G1KdMgq5R0", title: "Was the 180-day water supply promise realistic?" },
+  { youtubeId: "y7M7KnOVOGQ", title: "When government, business and ideas meet" },
+];

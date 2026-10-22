@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Eyebrow, Headline, Section } from "@/components/ui";
-import { programmes, weeklyRhythm, campaigns, org } from "@/lib/content";
+import { programmes, weeklyRhythm, campaigns, org, channelVideos } from "@/lib/content";
 import PosterCarousel from "@/components/PosterCarousel";
 import { getSiteSettings, getEpisodes } from "@/lib/site";
 
@@ -12,7 +12,19 @@ export const metadata: Metadata = {
 export const revalidate = 60;
 
 export default async function Media() {
-  const [settings, episodes] = await Promise.all([getSiteSettings(), getEpisodes()]);
+  const [settings, cmsEpisodes] = await Promise.all([getSiteSettings(), getEpisodes()]);
+
+  // CMS episodes win once they exist; until then show what is actually
+  // published on the channel rather than an empty section.
+  const episodes =
+    cmsEpisodes.length > 0
+      ? cmsEpisodes
+      : channelVideos.map((v) => ({
+          _id: v.youtubeId,
+          title: v.title,
+          youtubeId: v.youtubeId,
+          programme: undefined as string | undefined,
+        }));
   const featuredVideoId = settings.featuredVideoId;
 
   return (
@@ -90,7 +102,7 @@ export default async function Media() {
 
       {episodes.length > 0 && (
         <Section className="bg-white">
-          <Eyebrow>Latest Episodes</Eyebrow>
+          <Eyebrow>From CCGG TV</Eyebrow>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {episodes.slice(0, 6).map((e) => (
               <article key={e._id}>
