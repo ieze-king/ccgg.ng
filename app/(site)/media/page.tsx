@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Eyebrow, Headline, Section } from "@/components/ui";
-import { programmes, weeklyRhythm, campaigns } from "@/lib/content";
+import { programmes, weeklyRhythm, campaigns, org } from "@/lib/content";
 import PosterCarousel from "@/components/PosterCarousel";
 import { getSiteSettings, getEpisodes } from "@/lib/site";
 
@@ -132,8 +132,34 @@ export default async function Media() {
           ))}
         </div>
         <p className="mt-10 text-sm text-ink/55">
-          Full programmes on YouTube &middot; short-form on Instagram and TikTok &middot;
-          parish distribution via WhatsApp.
+          Full programmes on{" "}
+          <a
+            href={org.socials.youtube}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-forest-900 underline decoration-gold-500 underline-offset-2"
+          >
+            YouTube
+          </a>{" "}
+          &middot; short-form on{" "}
+          <a
+            href={org.socials.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-forest-900 underline decoration-gold-500 underline-offset-2"
+          >
+            Instagram
+          </a>{" "}
+          and{" "}
+          <a
+            href={org.socials.tiktok}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-forest-900 underline decoration-gold-500 underline-offset-2"
+          >
+            TikTok
+          </a>{" "}
+          &middot; parish distribution via WhatsApp.
         </p>
       </Section>
     </>

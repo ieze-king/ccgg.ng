@@ -25,7 +25,10 @@ export async function getSiteSettings() {
     featuredVideoId: clean(cms?.featuredVideoId) ?? seedVideoId ?? "",
     festivalDates: clean(cms?.festivalDates),
     festivalVenue: clean(cms?.festivalVenue),
-    socials: cms?.socials ?? {},
+    // CMS wins per channel; anything unset there falls back to the seed,
+    // so a single handle can be changed in the studio without clearing
+    // the others.
+    socials: { ...org.socials, ...(cms?.socials ?? {}) },
   };
 }
 

@@ -23,12 +23,18 @@ export const org = {
   civicEmail: "civics@ccgg.ng",
   phone: "+234 000 000 0000",
   address: "Enugu State, Nigeria",
+  /**
+   * Official channels. Tracking parameters from the shared links are
+   * stripped; the Facebook page uses a numeric profile id, which is its
+   * canonical form until a vanity URL is claimed.
+   */
   socials: {
-    youtube: "#",   // PLACEHOLDER: channel URL
-    facebook: "#",  // PLACEHOLDER
-    instagram: "#", // PLACEHOLDER
-    tiktok: "#",    // PLACEHOLDER
-    x: "#",         // PLACEHOLDER
+    facebook: "https://www.facebook.com/profile.php?id=61594885714835",
+    instagram: "https://www.instagram.com/church4ccgg",
+    tiktok: "https://www.tiktok.com/@church4ccgg1",
+    youtube: "https://www.youtube.com/@church4ccgg-i4e",
+    x: "",
+    whatsapp: "",
   },
 } as const;
 
