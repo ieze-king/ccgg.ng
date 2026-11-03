@@ -40,7 +40,11 @@ export default async function NewsArticle({ params }: Params) {
 
       {post.coverImage ? (
         <div className="bg-white">
-          <div className="mx-auto max-w-5xl px-5 lg:px-8">
+          {/* Mirrors Section exactly: padding on the outer element, measure on
+              the inner one. Nesting them the other way puts the image 32px
+              right of the headline above 1440px. */}
+          <div className="px-5 lg:px-8">
+          <div className="mx-auto max-w-7xl">
             <Image
               src={urlFor(post.coverImage)!.width(1600).height(900).fit("crop").auto("format").url()}
               alt={
@@ -51,6 +55,7 @@ export default async function NewsArticle({ params }: Params) {
               priority
               className="-mt-10 w-full rounded-card shadow-lg ring-1 ring-forest-900/10 sm:-mt-14"
             />
+          </div>
           </div>
         </div>
       ) : null}
