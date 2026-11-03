@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { PortableText, type PortableTextBlock } from "@portabletext/react";
+import { urlFor } from "@/sanity/lib/image";
 import { Eyebrow, Headline, Section } from "@/components/ui";
 import { getPost } from "@/lib/site";
 
@@ -35,6 +37,23 @@ export default async function NewsArticle({ params }: Params) {
           </time>
         )}
       </Section>
+
+      {post.coverImage ? (
+        <div className="bg-white">
+          <div className="mx-auto max-w-5xl px-5 lg:px-8">
+            <Image
+              src={urlFor(post.coverImage)!.width(1600).height(900).fit("crop").auto("format").url()}
+              alt={
+                (post.coverImage as { alt?: string }).alt?.trim() || post.title
+              }
+              width={1600}
+              height={900}
+              priority
+              className="-mt-10 w-full rounded-card shadow-lg ring-1 ring-forest-900/10 sm:-mt-14"
+            />
+          </div>
+        </div>
+      ) : null}
 
       <Section className="bg-white">
         <div className="max-w-2xl">

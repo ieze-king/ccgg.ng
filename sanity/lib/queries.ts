@@ -9,7 +9,8 @@ export const siteSettingsQuery = defineQuery(`
 
 export const postsQuery = defineQuery(`
   *[_type == "post" && defined(slug.current)] | order(publishedAt desc){
-    _id, title, "slug": slug.current, publishedAt, category, excerpt, coverImage
+    _id, title, "slug": slug.current, publishedAt, category, excerpt,
+    coverImage{..., "alt": coalesce(alt, "")}
   }
 `);
 

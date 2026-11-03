@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { urlFor } from "@/sanity/lib/image";
 import { Eyebrow, Headline, Section } from "@/components/ui";
 import { getPosts } from "@/lib/site";
 
@@ -46,7 +48,19 @@ export default async function News() {
             {posts.map((p) => (
               <article key={p._id} className="group">
                 <Link href={`/news/${p.slug}`} className="block">
-                  <div className="rounded-card border border-forest-900/10 p-6 transition-all group-hover:border-gold-500 group-hover:shadow-lg">
+                  <div className="overflow-hidden rounded-card border border-forest-900/10 transition-all group-hover:border-gold-500 group-hover:shadow-lg">
+                    {p.coverImage ? (
+                      <Image
+                        src={urlFor(p.coverImage)!.width(800).height(500).fit("crop").auto("format").url()}
+                        alt={
+                          (p.coverImage as { alt?: string }).alt?.trim() || p.title
+                        }
+                        width={800}
+                        height={500}
+                        className="h-44 w-full object-cover"
+                      />
+                    ) : null}
+                    <div className="p-6">
                     {p.category && (
                       <p className="text-xs font-bold tracking-[0.14em] text-gold-600 uppercase">
                         {categoryLabels[p.category] ?? p.category}
@@ -68,6 +82,7 @@ export default async function News() {
                         day: "numeric", month: "long", year: "numeric",
                       })}
                     </time>
+                    </div>
                   </div>
                 </Link>
               </article>
