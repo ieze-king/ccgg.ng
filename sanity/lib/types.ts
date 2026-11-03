@@ -16,7 +16,7 @@ export type PostSummary = {
   title: string;
   slug: string;
   publishedAt: string;
-  category?: string;
+  categories?: string[];
   excerpt?: string;
   coverImage?: { alt?: string } & Record<string, unknown>;
 };

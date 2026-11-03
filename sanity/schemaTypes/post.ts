@@ -24,8 +24,12 @@ export const post = defineType({
       validation: (r) => r.required(),
     }),
     defineField({
-      name: "category",
-      type: "string",
+      name: "categories",
+      title: "Categories",
+      description:
+        "Pick up to three. Most articles need one or two; tagging everything makes the categories useless for filtering.",
+      type: "array",
+      of: [{ type: "string" }],
       options: {
         list: [
           { title: "Civic Education", value: "civic-education" },
@@ -34,8 +38,9 @@ export const post = defineType({
           { title: "Festival", value: "festival" },
           { title: "Announcement", value: "announcement" },
         ],
-        layout: "radio",
+        layout: "grid",
       },
+      validation: (r) => r.max(3).unique(),
     }),
     defineField({
       name: "excerpt",
@@ -80,6 +85,6 @@ export const post = defineType({
     },
   ],
   preview: {
-    select: { title: "title", subtitle: "category", media: "coverImage" },
+    select: { title: "title", subtitle: "categories.0", media: "coverImage" },
   },
 });

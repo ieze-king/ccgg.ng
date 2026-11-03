@@ -61,10 +61,17 @@ export default async function News() {
                       />
                     ) : null}
                     <div className="p-6">
-                    {p.category && (
-                      <p className="text-xs font-bold tracking-[0.14em] text-gold-600 uppercase">
-                        {categoryLabels[p.category] ?? p.category}
-                      </p>
+                    {p.categories && p.categories.length > 0 && (
+                      <ul className="flex flex-wrap gap-x-2 gap-y-1">
+                        {p.categories.map((c) => (
+                          <li
+                            key={c}
+                            className="text-xs font-bold tracking-[0.14em] text-gold-600 uppercase"
+                          >
+                            {categoryLabels[c] ?? c}
+                          </li>
+                        ))}
+                      </ul>
                     )}
                     <h2 className="mt-2.5 font-display text-lg leading-snug font-bold text-forest-900">
                       {p.title}

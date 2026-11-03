@@ -9,14 +9,26 @@ export const siteSettingsQuery = defineQuery(`
 
 export const postsQuery = defineQuery(`
   *[_type == "post" && defined(slug.current)] | order(publishedAt desc){
-    _id, title, "slug": slug.current, publishedAt, category, excerpt,
+    _id, title, "slug": slug.current, publishedAt, excerpt,
+    // articles written before the field became a list still hold a single
+    // string, so fall back to wrapping it
+    "categories": select(
+      defined(categories) => categories,
+      defined(category) => [category],
+      []
+    ),
     coverImage{..., "alt": coalesce(alt, "")}
   }
 `);
 
 export const postBySlugQuery = defineQuery(`
   *[_type == "post" && slug.current == $slug][0]{
-    _id, title, "slug": slug.current, publishedAt, category, excerpt,
+    _id, title, "slug": slug.current, publishedAt, excerpt,
+    "categories": select(
+      defined(categories) => categories,
+      defined(category) => [category],
+      []
+    ),
     coverImage, body
   }
 `);
