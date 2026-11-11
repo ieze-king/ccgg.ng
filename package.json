@@ -1,5 +1,5 @@
 {
-  "name": "scaffold",
+  "name": "ccgg-ng",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "content:login": "sanity login",
+    "content:login": "sanity login --provider github",
     "content:backup": "mkdir -p backups && sanity dataset export production \"backups/ccgg-$(date +%Y-%m-%d).tar.gz\""
   },
   "dependencies": {
