@@ -13,3 +13,6 @@ next-env.d.ts
 # budget, risk and staff information that must not be published. Poster images
 # used by the site live in public/posters/ instead.
 ccgg.assets/
+
+# content backups are data, not code, and this repo is public
+backups/

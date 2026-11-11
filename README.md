@@ -48,6 +48,25 @@ Contact, parish registration, volunteer and partnership forms all post to
 Until those are set the endpoint returns `503` with an explanatory message
 rather than silently discarding a submission.
 
+## Content backups
+
+The CMS holds every article and uploaded image. Anyone with Administrator
+access in Sanity can delete a dataset, and that is not recoverable from
+document history. Take a backup before adding administrators, and
+periodically after.
+
+    npm run content:login     # once per machine
+    npm run content:backup    # writes backups/ccgg-YYYY-MM-DD.tar.gz
+
+Backups are git-ignored, because this repository is public and the archive
+is data rather than code. Keep them somewhere durable: Drive, or an
+external disk.
+
+## Writing articles
+
+See [docs/PUBLISHING.md](docs/PUBLISHING.md). No developer needed; authors
+work entirely in the studio at /studio.
+
 ## Outstanding
 
 - Real logo file (SVG) — currently a placeholder extracted from the posters

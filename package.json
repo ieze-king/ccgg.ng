@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "content:login": "sanity login",
+    "content:backup": "mkdir -p backups && sanity dataset export production \"backups/ccgg-$(date +%Y-%m-%d).tar.gz\""
   },
   "dependencies": {
     "@portabletext/react": "^8.0.1",
