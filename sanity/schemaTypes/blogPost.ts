@@ -50,6 +50,12 @@ export const blogPost = defineType({
       name: "coverImage",
       type: "image",
       options: { hotspot: true },
+      validation: (r) =>
+        r.custom((img?: { asset?: unknown; alt?: string }) =>
+          !img?.asset || img?.alt?.trim()
+            ? true
+            : "Add alt text so the image is described for people who cannot see it."
+        ),
       fields: [
         defineField({
           name: "alt",

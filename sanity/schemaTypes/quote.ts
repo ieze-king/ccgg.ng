@@ -51,6 +51,12 @@ export const quote = defineType({
       type: "image",
       description: "Optional. A portrait, or the shareable graphic.",
       options: { hotspot: true },
+      validation: (r) =>
+        r.custom((img?: { asset?: unknown; alt?: string }) =>
+          !img?.asset || img?.alt?.trim()
+            ? true
+            : "Add alt text so the image is described for people who cannot see it."
+        ),
       fields: [defineField({ name: "alt", type: "string", title: "Alt text" })],
     }),
   ],
