@@ -39,6 +39,7 @@ const nav: Item[] = [
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState<string | null>(null);
+  const [submenu, setSubmenu] = useState<string | null>(null);
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -48,9 +49,16 @@ export default function SiteHeader() {
   // close the desktop panel on Escape, or on a click outside it
   useEffect(() => {
     if (!menu) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenu(null);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      if (submenu) setSubmenu(null);
+      else setMenu(null);
+    };
     const onClick = (e: MouseEvent) => {
-      if (!dropdownRef.current?.contains(e.target as Node)) setMenu(null);
+      if (!dropdownRef.current?.contains(e.target as Node)) {
+        setMenu(null);
+        setSubmenu(null);
+      }
     };
     document.addEventListener("keydown", onKey);
     document.addEventListener("mousedown", onClick);
@@ -58,11 +66,12 @@ export default function SiteHeader() {
       document.removeEventListener("keydown", onKey);
       document.removeEventListener("mousedown", onClick);
     };
-  }, [menu]);
+  }, [menu, submenu]);
 
   // a route change should always dismiss both menus
   useEffect(() => {
     setMenu(null);
+    setSubmenu(null);
     setOpen(false);
   }, [pathname]);
 
@@ -104,30 +113,60 @@ export default function SiteHeader() {
                       All news
                     </Link>
                     <div className="my-1 h-px bg-forest-900/10" />
-                    {item.children.map((child) => (
-                      <div key={child.href}>
+                    {item.children.map((child) =>
+                      child.children ? (
+                        <div
+                          key={child.href}
+                          className="relative"
+                          onMouseEnter={() => setSubmenu(child.href)}
+                          onMouseLeave={() => setSubmenu(null)}
+                        >
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setSubmenu(submenu === child.href ? null : child.href)
+                            }
+                            aria-expanded={submenu === child.href}
+                            aria-haspopup="true"
+                            className="flex w-full items-center justify-between gap-2 rounded-md px-3 py-2 text-left text-sm font-medium text-ink/80 hover:bg-forest-50 hover:text-forest-900"
+                          >
+                            {child.label}
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                              <path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </button>
+
+                          {submenu === child.href && (
+                            <div className="absolute left-full top-0 z-50 ml-1 w-56 rounded-card border border-forest-900/10 bg-white p-2 shadow-xl">
+                              <Link
+                                href={child.href}
+                                className="block rounded-md px-3 py-2 text-sm font-bold text-forest-900 hover:bg-forest-50"
+                              >
+                                All quotes
+                              </Link>
+                              <div className="my-1 h-px bg-forest-900/10" />
+                              {child.children.map((g) => (
+                                <Link
+                                  key={g.href}
+                                  href={g.href}
+                                  className="block rounded-md px-3 py-2 text-sm text-ink/75 hover:bg-forest-50 hover:text-forest-900"
+                                >
+                                  {g.label}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
                         <Link
+                          key={child.href}
                           href={child.href}
                           className="block rounded-md px-3 py-2 text-sm font-medium text-ink/80 hover:bg-forest-50 hover:text-forest-900"
                         >
                           {child.label}
                         </Link>
-                        {child.children && (
-                          <ul className="mb-1 ml-3 border-l border-forest-900/10 pl-3">
-                            {child.children.map((g) => (
-                              <li key={g.href}>
-                                <Link
-                                  href={g.href}
-                                  className="block rounded-md px-2 py-1.5 text-[13px] text-ink/60 hover:bg-forest-50 hover:text-forest-900"
-                                >
-                                  {g.label}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
-                    ))}
+                      )
+                    )}
                   </div>
                 )}
               </div>
