@@ -29,7 +29,18 @@ export default defineConfig({
                   .documentId("siteSettings")
               ),
             S.divider(),
-            S.documentTypeListItem("post").title("News & Articles"),
+            S.listItem()
+              .title("News")
+              .child(
+                S.list()
+                  .title("News")
+                  .items([
+                    S.documentTypeListItem("post").title("Articles"),
+                    S.documentTypeListItem("newsletter").title("Newsletter"),
+                    S.documentTypeListItem("blogPost").title("Blog"),
+                    S.documentTypeListItem("quote").title("Quotes"),
+                  ])
+              ),
             S.documentTypeListItem("episode").title("Media Episodes"),
             S.documentTypeListItem("programme").title("Programmes"),
             S.documentTypeListItem("resource").title("Resources & Reports"),

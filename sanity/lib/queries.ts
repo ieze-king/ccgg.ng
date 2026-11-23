@@ -50,3 +50,51 @@ export const resourcesQuery = defineQuery(`
     "fileUrl": file.asset->url
   }
 `);
+
+/* ── Newsletter ─────────────────────────────────────────────────────── */
+
+export const newslettersQuery = defineQuery(`
+  *[_type == "newsletter" && defined(slug.current)] | order(publishedAt desc){
+    _id, title, "slug": slug.current, publishedAt, issue, excerpt,
+    coverImage{..., "alt": coalesce(alt, "")}
+  }
+`);
+
+export const newsletterBySlugQuery = defineQuery(`
+  *[_type == "newsletter" && slug.current == $slug][0]{
+    _id, title, "slug": slug.current, publishedAt, issue, excerpt,
+    coverImage, body, "pdfUrl": pdf.asset->url
+  }
+`);
+
+/* ── Blog ───────────────────────────────────────────────────────────── */
+
+export const blogPostsQuery = defineQuery(`
+  *[_type == "blogPost" && defined(slug.current)] | order(publishedAt desc){
+    _id, title, "slug": slug.current, publishedAt, author, excerpt,
+    coverImage{..., "alt": coalesce(alt, "")}
+  }
+`);
+
+export const blogPostBySlugQuery = defineQuery(`
+  *[_type == "blogPost" && slug.current == $slug][0]{
+    _id, title, "slug": slug.current, publishedAt, author, excerpt,
+    coverImage, body
+  }
+`);
+
+/* ── Quotes ─────────────────────────────────────────────────────────── */
+
+export const quotesQuery = defineQuery(`
+  *[_type == "quote"] | order(publishedAt desc){
+    _id, text, attribution, attributionRole, theme, publishedAt,
+    image{..., "alt": coalesce(alt, "")}
+  }
+`);
+
+export const quotesByThemeQuery = defineQuery(`
+  *[_type == "quote" && theme == $theme] | order(publishedAt desc){
+    _id, text, attribution, attributionRole, theme, publishedAt,
+    image{..., "alt": coalesce(alt, "")}
+  }
+`);

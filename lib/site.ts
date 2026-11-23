@@ -1,8 +1,14 @@
 import { sanityFetch } from "@/sanity/lib/fetch";
 import {
   siteSettingsQuery, postsQuery, postBySlugQuery, episodesQuery,
+  newslettersQuery, newsletterBySlugQuery,
+  blogPostsQuery, blogPostBySlugQuery,
+  quotesQuery, quotesByThemeQuery,
 } from "@/sanity/lib/queries";
-import type { SiteSettings, PostSummary, Post, Episode } from "@/sanity/lib/types";
+import type {
+  SiteSettings, PostSummary, Post, Episode,
+  Newsletter, BlogPost, Quote,
+} from "@/sanity/lib/types";
 import { org, featuredVideoId as seedVideoId } from "./content";
 
 /**
@@ -42,4 +48,28 @@ export async function getPost(slug: string) {
 
 export async function getEpisodes() {
   return sanityFetch<Episode[]>(episodesQuery, []);
+}
+
+export async function getNewsletters() {
+  return sanityFetch<Newsletter[]>(newslettersQuery, []);
+}
+
+export async function getNewsletter(slug: string) {
+  return sanityFetch<Newsletter | null>(newsletterBySlugQuery, null, { slug });
+}
+
+export async function getBlogPosts() {
+  return sanityFetch<BlogPost[]>(blogPostsQuery, []);
+}
+
+export async function getBlogPost(slug: string) {
+  return sanityFetch<BlogPost | null>(blogPostBySlugQuery, null, { slug });
+}
+
+export async function getQuotes() {
+  return sanityFetch<Quote[]>(quotesQuery, []);
+}
+
+export async function getQuotesByTheme(theme: string) {
+  return sanityFetch<Quote[]>(quotesByThemeQuery, [], { theme });
 }

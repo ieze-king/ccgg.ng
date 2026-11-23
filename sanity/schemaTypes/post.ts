@@ -1,5 +1,8 @@
 import { defineField, defineType } from "sanity";
 
+/** Slugs that would collide with a section route and become unreachable. */
+const RESERVED = ["articles", "newsletter", "blog", "quotes"];
+
 export const post = defineType({
   name: "post",
   title: "News & Articles",
@@ -14,7 +17,12 @@ export const post = defineType({
       name: "slug",
       type: "slug",
       options: { source: "title", maxLength: 96 },
-      validation: (r) => r.required(),
+      validation: (r) =>
+        r.required().custom((v) =>
+          v?.current && RESERVED.includes(v.current)
+            ? `"${v.current}" is reserved for a section page. Choose another slug.`
+            : true
+        ),
     }),
     defineField({
       name: "publishedAt",

@@ -279,3 +279,10 @@ export const channelVideos = [
   { youtubeId: "_G1KdMgq5R0", title: "Was the 180-day water supply promise realistic?" },
   { youtubeId: "y7M7KnOVOGQ", title: "When government, business and ideas meet" },
 ];
+
+/** Quote themes. Kept in step with sanity/schemaTypes/quote.ts. */
+export const quoteThemes = [
+  { title: "Civic Wisdom", value: "civic-wisdom" },
+  { title: "Governance & Leadership", value: "governance-leadership" },
+  { title: "Values for Living", value: "values-for-living" },
+] as const;
